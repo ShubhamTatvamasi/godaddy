@@ -11,26 +11,24 @@ export GODADDY_URL=https://api.godaddy.com
 export DOMAIN=shubhamtatvamasi.com
 export RECORD_TYPE=A
 export RECORD_NAME=nginx.google
+
+# 
+export AUTH_HEADER="Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET"
+export RECORDS_URI="$GODADDY_URL/v1/domains/$DOMAIN/records"
+export RECORD_PATH="$RECORDS_URI/$RECORD_TYPE/$RECORD_NAME"
 ```
 
 get all the records from the domain:
 ```bash
-curl -s \
-  -H "Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET" \
-  "$GODADDY_URL/v1/domains/$DOMAIN/records" | jq
+curl -s -H $AUTH_HEADER $RECORDS_URI | jq
 ```
 
-get a specific record:
+# get a specific record:
 ```bash
-curl -s \
-  -H "Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET" \
-  "$GODADDY_URL/v1/domains/$DOMAIN/records/$RECORD_TYPE/$RECORD_NAME" | jq
+curl -s -H $AUTH_HEADER $RECORD_PATH | jq
 ```
 
 delete a specific record:
 ```bash
-curl -s \
-  -X "DELETE" \
-  -H "Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET" \
-  "$GODADDY_URL/v1/domains/$DOMAIN/records/$RECORD_TYPE/$RECORD_NAME"
+curl -s -X "DELETE" -H $AUTH_HEADER $RECORD_PATH | jq
 ```
