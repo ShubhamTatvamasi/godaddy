@@ -21,7 +21,7 @@ export RECORD_PATH="$RECORDS_URI/$RECORD_TYPE/$RECORD_NAME"
 export RECORD_VALUE=8.8.8.8
 
 # data object
-export NEW_RECORD="[{\"data\": \"${RECORD_VALUE}\"}]"
+export NEW_RECORD="[{\"data\": \"$RECORD_VALUE\"}]"
 ```
 
 get all the records from the domain:
