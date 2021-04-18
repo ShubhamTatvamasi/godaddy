@@ -16,6 +16,12 @@ export RECORD_NAME=nginx.google
 export AUTH_HEADER="Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET"
 export RECORDS_URI="$GODADDY_URL/v1/domains/$DOMAIN/records"
 export RECORD_PATH="$RECORDS_URI/$RECORD_TYPE/$RECORD_NAME"
+
+# required for setting a specific record
+export RECORD_VALUE=8.8.8.8
+
+# data object
+export NEW_RECORD="[{\"data\": \"${RECORD_VALUE}\"}]"
 ```
 
 get all the records from the domain:
@@ -28,7 +34,15 @@ get a specific record:
 curl -s -H $AUTH_HEADER $RECORD_PATH | jq
 ```
 
+set a specific record:
+```bash
+curl -s -X "PUT" -d $NEW_RECORD \
+  -H 'Content-Type: application/json' \
+  -H $AUTH_HEADER $RECORD_PATH
+```
+
 delete a specific record:
 ```bash
-curl -s -X "DELETE" -H $AUTH_HEADER $RECORD_PATH | jq
+curl -s -X "DELETE" -H $AUTH_HEADER $RECORD_PATH
 ```
+
