@@ -23,7 +23,7 @@ get all the records from the domain:
 curl -s -H $AUTH_HEADER $RECORDS_URI | jq
 ```
 
-# get a specific record:
+get a specific record:
 ```bash
 curl -s -H $AUTH_HEADER $RECORD_PATH | jq
 ```
