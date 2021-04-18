@@ -12,7 +12,7 @@ export DOMAIN=shubhamtatvamasi.com
 export RECORD_TYPE=A
 export RECORD_NAME=nginx.google
 
-# 
+# curl headers and path
 export AUTH_HEADER="Authorization: sso-key $GODADDY_API_KEY:$GODADDY_API_SECRET"
 export RECORDS_URI="$GODADDY_URL/v1/domains/$DOMAIN/records"
 export RECORD_PATH="$RECORDS_URI/$RECORD_TYPE/$RECORD_NAME"
