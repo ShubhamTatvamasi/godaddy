@@ -1,5 +1,7 @@
 # godaddy
 
+https://developer.godaddy.com/doc/endpoint/domains
+
 export environment variables:
 ```bash
 # API keys for Godaddy
@@ -45,4 +47,3 @@ delete a specific record:
 ```bash
 curl -s -X "DELETE" -H $AUTH_HEADER $RECORD_PATH
 ```
-
